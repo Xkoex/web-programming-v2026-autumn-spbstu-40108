@@ -3,14 +3,26 @@ import React from 'react';
 export function Pagination({currentPage, totalPages, onChange}) {
   const pages = Array.from({length: totalPages}, (_, i) => i + 1);
 
+  function goPrevious() {
+    if (currentPage > 1) {
+      onChange(currentPage - 1);
+    }
+  }
+
+  function goNext() {
+    if (currentPage < totalPages) {
+      onChange(currentPage + 1);
+    }
+  }
+
   return (
     <nav className="pagination" aria-label="Пагинация">
       <button
         type="button"
         className="pagination-button"
         data-testid="page-previous"
-        onClick={() => onChange(currentPage - 1)}
-        disabled={currentPage === 1}
+        aria-disabled={currentPage === 1}
+        onClick={goPrevious}
       >
         ← Назад
       </button>
@@ -40,8 +52,8 @@ export function Pagination({currentPage, totalPages, onChange}) {
         type="button"
         className="pagination-button"
         data-testid="page-next"
-        onClick={() => onChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        aria-disabled={currentPage === totalPages}
+        onClick={goNext}
       >
         Вперёд →
       </button>

@@ -106,7 +106,7 @@ body {
   transition: background 0.15s ease;
 }
 
-.pagination-button:disabled {
+.pagination-button[aria-disabled='true'] {
   cursor: not-allowed;
   opacity: 0.5;
 }
