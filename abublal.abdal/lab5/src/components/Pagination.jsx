@@ -8,12 +8,16 @@ export function Pagination({currentPage, totalPages, onChange}) {
       <button
         type="button"
         className="pagination-button"
-        data-testid="pagination-prev"
+        data-testid="page-prev"
         onClick={() => onChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
         ← Назад
       </button>
+
+      <span className="pagination-indicator" data-testid="page-indicator">
+        {currentPage} / {totalPages}
+      </span>
 
       {pages.map((page) => (
         <button
@@ -24,7 +28,7 @@ export function Pagination({currentPage, totalPages, onChange}) {
               ? 'pagination-button pagination-button-active'
               : 'pagination-button'
           }
-          data-testid="pagination-page"
+          data-testid="page-number"
           aria-current={page === currentPage ? 'page' : undefined}
           onClick={() => onChange(page)}
         >
@@ -35,7 +39,7 @@ export function Pagination({currentPage, totalPages, onChange}) {
       <button
         type="button"
         className="pagination-button"
-        data-testid="pagination-next"
+        data-testid="page-next"
         onClick={() => onChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >

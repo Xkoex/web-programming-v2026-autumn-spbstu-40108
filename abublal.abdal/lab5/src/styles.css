@@ -124,3 +124,9 @@ body {
 .pagination-button:hover:not(:disabled) {
   background: #eef3ff;
 }
+
+.pagination-indicator {
+  padding: 0 8px;
+  font-size: 14px;
+  color: #333;
+}
